@@ -1,0 +1,25 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2>Авторизация</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div [formGroup]="loginForm">
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="ИНН" formControlName="login" (focus)="clearErrMessage()">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Пароль" formControlName="password" (focus)="clearErrMessage()">
+        </mat-form-field>
+      </div>
+      <span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="login()">Войти</button>
+    <button mat-raised-button color="primary" (click)="register()">Регистрация</button>
+  </mat-card-actions>
+</mat-card>
+<app-spinner *ngIf="isLoading"></app-spinner>

@@ -1,0 +1,30 @@
+<div>
+  <h3 *ngIf="!data.register && data.user.id">Редактирование пользователя</h3>
+  <h3 *ngIf="!data.register && !data.user.id">Добавление пользователя</h3>
+  <h2 *ngIf="data.register && !data.user.id">Регистрация</h2>
+  <form class="example-form" [formGroup]="userForm">
+    <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="ИНН" formControlName="login" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="Пароль" formControlName="password" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="Подтверждение пароля" formControlName="confirmPassword" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Фамилия" formControlName="surName" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Имя" formControlName="firstName" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Отчество" formControlName="lastName" (focus)="clearErrMessage()">
+    </mat-form-field>
+    <div class="err">
+      <span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span>
+    </div>
+    <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
+    <button mat-raised-button color="primary" (click)="cancel()">Отменить</button>
+  </form>
+</div>
